@@ -6,6 +6,7 @@ export default function Header() {
 
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
     const [activeSection, setActiveSection] = useState('home'); // Track the active section
+    const [isLogedIn, setIsLogedIn] = useState(false)
 
     const handleCaretClick = () => {
         setIsDropdownVisible(!isDropdownVisible);
@@ -60,7 +61,11 @@ export default function Header() {
                     </li>
                 </ul>
             </div>
-            <div className="profile">
+
+
+
+            {isLogedIn ? (
+                <div className="profile">
                 <img className='profile-image' src={profileImage} alt="profile-image" />
                 <div className="profile-text">
                     <h2>Abbes Bilel</h2>
@@ -76,6 +81,13 @@ export default function Header() {
                     </div>
                 )}
             </div>
+            ) : (
+                <div className="login">
+            <i className="fa-solid fa-user"></i>
+            <span>Sign in</span>
+            </div>
+            )}
+            
         </div>
     )
 }
